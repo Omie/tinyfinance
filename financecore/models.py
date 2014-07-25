@@ -29,9 +29,12 @@ class Investment(models.Model):
     start_date = models.DateField()
     period = models.IntegerField() #months
 
-    interest_rate = models.DecimalField(max_digits=32,decimal_places=2)
+    interest_rate = models.DecimalField(max_digits=8,decimal_places=2)
     interest_type = models.CharField(choices=INTEREST_TYPE_CHOICES,
                         max_length=4)
+
+    principalamount = models.DecimalField(max_digits=16,decimal_places=2,
+                        verbose_name="Principal Amount")
 
     def __unicode__(self):
         return " ".join([self.name, "-", self.type.name, "at", 
